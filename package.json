@@ -3,17 +3,25 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.9.12",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "axios": "^0.19.2",
+    "docker": "^1.0.0",
+    "dotenv": "^8.2.0",
+    "node-sass": "^4.14.0",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "save": "^2.4.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "css-build": "node-sass --omit-source-map-url src/App.scss src/index.css",
+    "css-watch": "npm run css-build -- --watch",
+    "start": "npm run css-watch & react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
