@@ -4,11 +4,9 @@ export const searchZipCode = async (submittedData) => {
   try {
     let results = [];
     const res = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${submittedData}&key=${process.env.REACT_APP_GOOGLE_KEY}`);
-
     const resGoogle = res.data.results[0];
-    console.log('resGoogle ******------>>>>>>', resGoogle);
-
     const resRiseSet = await translateData(resGoogle);
+
     results.push(resGoogle, resRiseSet);
     return results;
   } catch (err) {
