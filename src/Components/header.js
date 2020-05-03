@@ -1,22 +1,22 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, TextField } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
-import Location from './location';
 import { searchZipCode } from '../utils/utils';
 
 const Header = () => {
-  const [search, setLocation] = useState({ locationSearch: '' });
-  const [data, setData] = useState(null);
+  const [search, setLocation] = useState('');
+  const [data, setData] = useState({});
 
-  const handleChange = (prop) => (e) => {
-    setLocation({ ...search, [prop]: e.target.value });
+  const handleChange = (e) => {
+    setLocation(e.target.value);
   };
 
   const handleSubmit = async () => {
     try {
-      const submit = search.locationSearch;
-      const result = await searchZipCode(submit);
+      const result = await searchZipCode(search);
+      console.log('result ******------>>>>>>', result);
+
       return setData(result);
     } catch (err) {
       console.log('err ******------>>>>>>', err);
@@ -32,13 +32,12 @@ const Header = () => {
         InputLabelProps={{
           shrink: true,
         }}
-        value={search.locationSearch}
-        onChange={handleChange('locationSearch')}
+        value={search}
+        onChange={(event) => handleChange(event)}
       />
       <Button className='btn' size='small' variant='outlined' color='primary' onClick={handleSubmit}>
         <SearchIcon /> Search
       </Button>
-      <div className='Location-wrapper'>{data ? <Location data={data} /> : null}</div>
     </div>
   );
 };

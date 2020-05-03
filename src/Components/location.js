@@ -1,19 +1,22 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useEffect, useState } from 'react';
+import React, { Component } from 'react';
+import { searchContext } from './Context/searchContext';
 
-const Location = (props) => {
-  const [data, setData] = useState(props.data);
+class Location extends Component {
+  static contextType = searchContext;
+  render() {
+    console.log('this.context ******------>>>>>>', this.context);
 
-  useEffect(() => {
-    setData(data);
-  }, [data]);
+    return <div>hello</div>;
+  }
+}
 
-  return (
-    <div className='location-content'>
-      Location: {props.data[0].formatted_address}
-      <div>Sunrise: {new Date(props.data[1].sunrise).toLocaleTimeString()}</div> <div>Sunset: {new Date(props.data[1].sunset).toLocaleTimeString()}</div>
-    </div>
-  );
-};
+// const Location = (props) => {
+//   const [data, setData] = useState({});
+//   const { data } = useContext(searchContext);
+//   console.log('props ******------>>>>>>', data);
+
+//   return <div className='location-content'>Hello</div>;
+// };
 
 export default Location;
