@@ -8,10 +8,10 @@ const App = () => {
   return (
     <div className='App'>
       <SearchContextProvider>
-        <div className='header-wrapper'>
-          <Header />
-          <Location />
-        </div>
+        {/* <div className='header-wrapper'> */}
+        <Header />
+        <Location />
+        {/* </div> */}
       </SearchContextProvider>
     </div>
   );

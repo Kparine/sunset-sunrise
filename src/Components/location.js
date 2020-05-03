@@ -1,22 +1,19 @@
 // eslint-disable-next-line no-unused-vars
-import React, { Component } from 'react';
-import { searchContext } from './Context/searchContext';
+// @ts-check
+import React, { useContext, useEffect } from 'react';
+import { SearchContext } from '../Contexts/searchContext';
 
-class Location extends Component {
-  static contextType = searchContext;
-  render() {
-    console.log('this.context ******------>>>>>>', this.context);
+const Location = (props) => {
+  const { data } = useContext(SearchContext);
+  console.log('data ******------>>>>>>', SearchContext);
 
-    return <div>hello</div>;
-  }
-}
+  useEffect(() => {
+    console.log('props ******------>>>>>>', props);
 
-// const Location = (props) => {
-//   const [data, setData] = useState({});
-//   const { data } = useContext(searchContext);
-//   console.log('props ******------>>>>>>', data);
+    console.log('data ******------>>>>>>', data);
+  });
 
-//   return <div className='location-content'>Hello</div>;
-// };
+  return <div className='location-content'>Hello</div>;
+};
 
 export default Location;
