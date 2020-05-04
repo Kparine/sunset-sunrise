@@ -32,11 +32,9 @@ const Location = () => {
   if (!Object.keys(data).length) {
     return null;
   }
-  console.log('data ******------>>>>>>', data[1]);
-  console.log('data[0] ******------>>>>>>', data[0]);
 
   const convertLocalTimeZone = (data) => {
-    return moment(data).format('hh:mm:ss a');
+    return moment(data).format('h:mm:ss a');
   };
 
   const time_convert_seconds = (data) => {

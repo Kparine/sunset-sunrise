@@ -25,7 +25,9 @@ const Header = () => {
   return (
     <div className='header-content'>
       <div>
-        <h1 className='header-title'>RiseSet</h1>
+        <h1 className='header-title'>
+          RiseSet <i className='fa fa-adjust'></i>
+        </h1>
       </div>
       <div className='input-item'>
         <TextField
