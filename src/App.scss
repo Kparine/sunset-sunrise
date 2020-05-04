@@ -1,29 +1,48 @@
 @charset "utf-8";
 
-.App {
-  display: flex;
-  width: 100%;
-  height: 100vh;
-}
-.header-wrapper {
-  display: flex;
-  align-content: center;
-  width: 100%;
-  height: 50px;
-  padding: 20px 20px;
-  position: fixed;
+$bgcolour: rgb(212, 212, 212);
 
-  .header-content {
-    display: flex;
-    width: 100%;
-    padding: 5px;
+.App {
+  position: absolute;
+  width: 100%;
+}
+
+.header-content {
+  max-width: 100%;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+.header-wrapper .header-content {
+  display: flex;
+  align-items: center;
+  height: 100px;
+  width: 100%;
+  background-color: $bgcolour;
+
+  .header-wrapper.lighter {
+    color: lighten($bgcolour, 50%);
   }
 
   input {
-    margin-left: 20px;
+    position: 'relative';
+    border-radius: 10px;
+    padding-left: 10px;
+    background-color: fade(#fff, 0.15), '&:hover' {
+      background-color: fade(#fff, 0.25);
+    }
   }
 
   .btn {
     margin-left: 20px;
+  }
+}
+
+.location-wrapper {
+  display: flex;
+  width: 100%;
+
+  .location-content {
+    font-family: sans-serif;
   }
 }
