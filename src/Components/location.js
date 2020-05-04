@@ -5,6 +5,7 @@ import Card from '@material-ui/core/Card';
 import { makeStyles } from '@material-ui/core/styles';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import moment from 'moment';
 
 const useStyles = makeStyles({
   root: {
@@ -34,9 +35,14 @@ const Location = () => {
   console.log('data ******------>>>>>>', data[1]);
   console.log('data[0] ******------>>>>>>', data[0]);
 
-  const time_convert = (num) => {
-    return new Date(num * 1000).toISOString().substr(11, 8);
+  const convertLocalTimeZone = (data) => {
+    return moment(data).format('hh:mm:ss a');
   };
+
+  const time_convert_seconds = (data) => {
+    return new Date(data * 1000).toISOString().substr(11, 8);
+  };
+
   const bull = <span className={classes.bullet}>•</span>;
 
   return (
@@ -47,13 +53,13 @@ const Location = () => {
             {data[0].formatted_address}
           </Typography>
           <Typography variant='body2' component='p'>
-            {bull} Sunrise: {data[1].sunrise}
+            {bull} Sunrise: {convertLocalTimeZone(data[1].sunrise)}
           </Typography>
           <Typography variant='body2' component='p'>
-            {bull} Sunset: {data[1].sunset}
+            {bull} Sunset: {convertLocalTimeZone(data[1].sunset)}
           </Typography>
           <Typography variant='body2' component='p'>
-            {bull} Day Length: {time_convert(data[1].day_length)} Hours
+            {bull} Day Length: {time_convert_seconds(data[1].day_length)} Hours
           </Typography>
         </CardContent>
       </Card>

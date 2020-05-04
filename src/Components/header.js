@@ -25,13 +25,14 @@ const Header = () => {
   return (
     <div className='header-content'>
       <div>
-        <h1>RiseSet</h1>
+        <h1 className='header-title'>RiseSet</h1>
       </div>
       <div className='input-item'>
         <TextField
-          id='standard-number'
+          id='filled-basic'
           label='Location'
           type='text'
+          variant='filled'
           InputLabelProps={{
             shrink: true,
           }}
@@ -40,7 +41,7 @@ const Header = () => {
         />
       </div>
       <div className='btn-content'>
-        <Button className='btn' size='small' variant='outlined' color='primary' onClick={handleSubmit}>
+        <Button className='btn' size='small' variant='contained' color='primary' onClick={handleSubmit}>
           <SearchIcon /> Search
         </Button>
       </div>
