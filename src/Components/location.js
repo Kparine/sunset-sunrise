@@ -1,11 +1,11 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useContext } from 'react';
-import { SearchContext } from '../Contexts/searchContext';
 import Card from '@material-ui/core/Card';
-import { makeStyles } from '@material-ui/core/styles';
 import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
 import moment from 'moment';
+import Typography from '@material-ui/core/Typography';
+import { SearchContext } from '../Contexts/searchContext';
 
 const useStyles = makeStyles({
   root: {

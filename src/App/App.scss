@@ -5,31 +5,22 @@ $title: 'Roboto', sans-serif;
 $sub-title: 'Nunito', sans-serif;
 $bgcolour: #000;
 
-.App {
-  position: absolute;
-  width: 100%;
-  min-height: 100vh;
+* {
   margin: 0 auto;
-  background: rgb(255, 238, 0);
-  background: linear-gradient(0deg, rgb(255, 238, 0) 0%, rgba(142, 139, 95, 1) 25%, rgb(1, 52, 161) 100%);
+  padding: 0;
 }
 
-.App-content {
-  flex: 1 0 auto;
-  padding: var(— space) var(— space) 0;
-  width: 100%;
-}
-.App-content:after {
-  content: ‘\00a0’;
-  display: block;
-  margin-top: var(— space);
-  height: 0;
-  visibility: hidden;
+.App {
+  position: absolute;
+  min-width: 100%;
+  min-height: 100vh;
+  background: rgb(255, 236, 66);
+  background: linear-gradient(0deg, rgba(255, 236, 66, 1) 0%, rgba(150, 159, 176, 1) 51%, rgba(1, 60, 190, 1) 100%);
 }
 
 .header-content {
+  overflow-x: hidden;
   max-width: 100%;
-  padding: 20px;
   margin: 0 auto;
 }
 
@@ -56,12 +47,51 @@ $bgcolour: #000;
     background-color: #fff;
   }
 }
+
 .location-wrapper {
   display: flex;
+  justify-content: center;
   width: 100%;
-  margin-top: 100px;
+  margin-top: 50px;
 
   .location-content {
     font-family: $title;
   }
+}
+
+.lightbar-content {
+  position: relative;
+  width: 100%;
+  z-index: 1;
+  height: 30px;
+  margin-top: 20px;
+  background-color: #fff;
+  border-radius: 20px;
+  -webkit-box-shadow: 2px 4px 21px 2px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 2px 4px 21px 2px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 4px 21px 2px rgba(0, 0, 0, 0.75);
+}
+
+.lightbar-item {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+
+  .lightbar-title {
+    font-family: $title;
+    color: #fff;
+  }
+}
+
+.lightbar-item:first-child {
+  border-top-left-radius: 19px;
+  border-bottom-left-radius: 19px;
+}
+.lightbar-item:last-child {
+  border-top-right-radius: 19px;
+  border-bottom-right-radius: 19px;
 }

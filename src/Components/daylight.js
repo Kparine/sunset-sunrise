@@ -14,7 +14,7 @@ const useStyles = makeStyles({
   bullet: {
     display: 'inline-block',
     margin: '0 2px',
-    transform: 'scale(0.8)',
+    transform: 'scale(1)',
   },
   title: {
     fontSize: 14,
@@ -33,14 +33,22 @@ const Daylight = () => {
     return null;
   }
 
+  const bull = <span className={classes.bullet}>•</span>;
+
   const convertLocalTimeZone = (data) => {
     return moment(data).format('h:mm:ss a');
   };
 
-  const bull = <span className={classes.bullet}>•</span>;
-
   const duration = (start, end) => {
     return moment.utc(moment(end, 'HH:mm:ss').diff(moment(start, 'HH:mm:ss'))).format('hh:mm');
+  };
+
+  const percentDay = () => {
+    const totalSecondsInDay = 86400;
+    const secondsOfDaylight = parseInt(data[1].day_length);
+
+    const percent = Math.floor(((totalSecondsInDay - secondsOfDaylight) / totalSecondsInDay) * 100);
+    return percent;
   };
 
   return (
@@ -48,7 +56,7 @@ const Daylight = () => {
       <Card className={classes.root} raised={true}>
         <CardContent>
           <Typography className={classes.title} color='textSecondary' gutterBottom>
-            {data[0].formatted_address}
+            Day/Night Length
           </Typography>
           <Typography variant='body2' component='p'>
             {bull} Night - Begin: {convertLocalTimeZone(data[1].astronomical_twilight_end)}, End: {convertLocalTimeZone(data[1].astronomical_twilight_begin)}, Duration:
@@ -65,6 +73,18 @@ const Daylight = () => {
           </Typography>
         </CardContent>
       </Card>
+
+      {/* Turn LightBar Into Separate Component */}
+      <div className='lightbar-content'>
+        <div className='lightbar-item night' style={{ width: `${percentDay()}%`, backgroundImage: `linear-gradient(90deg, #020024 0%, #090979 ${percentDay() + 10}%, #00d4ff 100%)` }}>
+          <div className='lightbar-title'>Night {`${percentDay()}%`}</div>
+        </div>
+        <div className='lightbar-item day' style={{ width: `${100 - percentDay()}%`, marginLeft: `${percentDay()}%`, backgroundImage: `linear-gradient(270deg, #020024 20%, #090979 ${percentDay()}%, #00d4ff 100%)` }}>
+          <div className='lightbar-title' style={{ marginLeft: `30px`, color: `#000` }}>
+            Daylight {`${100 - percentDay()}%`}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

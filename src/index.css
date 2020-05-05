@@ -1,3 +1,74 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Roboto:wght@100;300&display=swap");
 * {
   margin: 0 auto;
-}
+  padding: 0; }
+
+.App {
+  position: absolute;
+  min-width: 100%;
+  min-height: 100vh;
+  background: #ffec42;
+  background: linear-gradient(0deg, #ffec42 0%, #969fb0 51%, #013cbe 100%); }
+
+.header-content {
+  overflow-x: hidden;
+  max-width: 100%;
+  margin: 0 auto; }
+
+.header-wrapper .header-content {
+  display: flex;
+  align-items: center;
+  height: 100px;
+  width: 100%;
+  background-color: #000; }
+  .header-wrapper .header-content .header-wrapper.lighter {
+    color: gray; }
+  .header-wrapper .header-content .header-title {
+    color: #fff;
+    font-family: "Nunito", sans-serif;
+    font-weight: 300; }
+  .header-wrapper .header-content input {
+    position: 'relative';
+    border-radius: 10px;
+    padding-left: 10px;
+    background-color: #fff; }
+
+.location-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 50px; }
+  .location-wrapper .location-content {
+    font-family: "Roboto", sans-serif; }
+
+.lightbar-content {
+  position: relative;
+  width: 100%;
+  z-index: 1;
+  height: 30px;
+  margin-top: 20px;
+  background-color: #fff;
+  border-radius: 20px;
+  -webkit-box-shadow: 2px 4px 21px 2px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 2px 4px 21px 2px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 4px 21px 2px rgba(0, 0, 0, 0.75); }
+
+.lightbar-item {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1; }
+  .lightbar-item .lightbar-title {
+    font-family: "Roboto", sans-serif;
+    color: #fff; }
+
+.lightbar-item:first-child {
+  border-top-left-radius: 19px;
+  border-bottom-left-radius: 19px; }
+
+.lightbar-item:last-child {
+  border-top-right-radius: 19px;
+  border-bottom-right-radius: 19px; }
