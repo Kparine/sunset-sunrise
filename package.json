@@ -1,5 +1,5 @@
 {
-  "name": "quick-install",
+  "name": "sunset-sunrise",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -15,7 +15,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1",
+    "react-scripts": "3.4.0",
     "save": "^2.4.0"
   },
   "scripts": {

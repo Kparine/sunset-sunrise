@@ -14,8 +14,8 @@ const App = () => {
           <Header />
           <LightBar />
           <div className='location-wrapper'>
-            <DayLight />
             <Location />
+            <DayLight />
           </div>
         </div>
       </SearchContextProvider>

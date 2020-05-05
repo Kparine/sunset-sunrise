@@ -2,7 +2,7 @@
 import React, { useContext, useState } from 'react';
 import { Button, TextField } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
-import { searchZipCode } from '../utils/utils';
+import { fetchLocationData } from '../utils/utils';
 import { SearchContext } from '../Contexts/searchContext';
 
 const Header = () => {
@@ -15,7 +15,7 @@ const Header = () => {
 
   const handleSubmit = async () => {
     try {
-      const result = await searchZipCode(search);
+      const result = await fetchLocationData(search);
       return setData(result);
     } catch (err) {
       console.log('err ******------>>>>>>', err);

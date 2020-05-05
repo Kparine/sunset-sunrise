@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const searchZipCode = async (search) => {
+export const fetchLocationData = async (search) => {
   try {
     let results = [];
     const res = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${search}&key=${process.env.REACT_APP_GOOGLE_KEY}`);
