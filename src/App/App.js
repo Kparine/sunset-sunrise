@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.scss';
+import DayLight from '../Components/daylight';
 import Header from '../Components/header';
 import Location from '../Components/location';
-import Daylight from '../Components/daylight';
+import LightBar from '../Components/ligth-bar';
 import SearchContextProvider from '../Contexts/searchContext';
-// import Map from '../Components/map';
 
 const App = () => {
   return (
@@ -12,10 +12,10 @@ const App = () => {
       <SearchContextProvider>
         <div className='header-wrapper'>
           <Header />
+          <LightBar />
           <div className='location-wrapper'>
+            <DayLight />
             <Location />
-            <Daylight />
-            <div>{/* <Map /> */}</div>
           </div>
         </div>
       </SearchContextProvider>

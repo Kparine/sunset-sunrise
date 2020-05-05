@@ -24,7 +24,7 @@ const useStyles = makeStyles({
   },
 });
 
-const Daylight = () => {
+const DayLight = () => {
   const classes = useStyles();
 
   const { data } = useContext(SearchContext);
@@ -41,14 +41,6 @@ const Daylight = () => {
 
   const duration = (start, end) => {
     return moment.utc(moment(end, 'HH:mm:ss').diff(moment(start, 'HH:mm:ss'))).format('hh:mm');
-  };
-
-  const percentDay = () => {
-    const totalSecondsInDay = 86400;
-    const secondsOfDaylight = parseInt(data[1].day_length);
-
-    const percent = Math.floor(((totalSecondsInDay - secondsOfDaylight) / totalSecondsInDay) * 100);
-    return percent;
   };
 
   return (
@@ -73,20 +65,8 @@ const Daylight = () => {
           </Typography>
         </CardContent>
       </Card>
-
-      {/* Turn LightBar Into Separate Component */}
-      <div className='lightbar-content'>
-        <div className='lightbar-item night' style={{ width: `${percentDay()}%`, backgroundImage: `linear-gradient(90deg, #020024 0%, #090979 ${percentDay() + 10}%, #00d4ff 100%)` }}>
-          <div className='lightbar-title'>Night {`${percentDay()}%`}</div>
-        </div>
-        <div className='lightbar-item day' style={{ width: `${100 - percentDay()}%`, marginLeft: `${percentDay()}%`, backgroundImage: `linear-gradient(270deg, #020024 20%, #090979 ${percentDay()}%, #00d4ff 100%)` }}>
-          <div className='lightbar-title' style={{ marginLeft: `30px`, color: `#000` }}>
-            Daylight {`${100 - percentDay()}%`}
-          </div>
-        </div>
-      </div>
     </div>
   );
 };
 
-export default Daylight;
+export default DayLight;
