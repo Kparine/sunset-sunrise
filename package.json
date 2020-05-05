@@ -8,8 +8,10 @@
     "axios": "^0.19.2",
     "docker": "^1.0.0",
     "dotenv": "^8.2.0",
+    "google-maps-react": "^2.0.6",
+    "lodash": "^4.17.15",
     "moment": "2.24.0",
-    "node-sass": "^4.14.0",
+    "node-sass": "^4.14.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -17,7 +19,7 @@
     "save": "^2.4.0"
   },
   "scripts": {
-    "css-build": "node-sass --omit-source-map-url src/App.scss src/index.css",
+    "css-build": "node-sass --omit-source-map-url src/App/App.scss src/index.css",
     "css-watch": "npm run css-build -- --watch",
     "start": "npm run css-watch & react-scripts start",
     "build": "react-scripts build",
