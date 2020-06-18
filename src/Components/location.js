@@ -33,12 +33,24 @@ const Location = () => {
 		return null;
 	}
 
-	const convertLocalTimeZone = (data) => {
-		return moment(data).format("h:mm:ss a");
+	const convertLocalTimeZone = (time) => {
+		return moment(time).format("h:mm:ss a");
 	};
 
-	const time_convert_seconds = (data) => {
-		return new Date(data * 1000).toISOString().substr(11, 8);
+	const time_convert_seconds = (time) => {
+		return new Date(time * 1000).toISOString().substr(11, 8);
+	};
+
+	const percentDay = () => {
+		const totalSecondsInDay = 86400;
+		const secondsOfDaylight = parseInt(data[1].day_length);
+
+		const percent =
+			100 -
+			Math.floor(
+				((totalSecondsInDay - secondsOfDaylight) / totalSecondsInDay) * 100
+			);
+		return percent;
 	};
 
 	const bull = <span className={classes.bullet}>•</span>;
@@ -61,7 +73,11 @@ const Location = () => {
 						{bull} Sunset: {convertLocalTimeZone(data[1].sunset)}
 					</Typography>
 					<Typography variant="body2" component="p">
-						{bull} Day Length: {time_convert_seconds(data[1].day_length)} Hours
+						{bull} Amount of Daylight:
+						{time_convert_seconds(data[1].day_length)} Hours
+					</Typography>
+					<Typography variant="body2" component="p">
+						{bull} Daylight Percent: {percentDay()}%
 					</Typography>
 				</CardContent>
 			</Card>
