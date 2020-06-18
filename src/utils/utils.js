@@ -49,8 +49,13 @@ const getTimeZone = async (data) => {
 	try {
 		const result = {};
 
+		/** @var timestamp - checks unix time for daylights savings, potentially can set/forget this var */
+		const timestamp = parseInt(
+			(new Date("2012.08.10").getTime() / 1000).toFixed(0)
+		);
+
 		const res = await axios.get(
-			`https://maps.googleapis.com/maps/api/timezone/json?location=${data.lat},${data.lng}&timestamp=1331161200&key=${process.env.REACT_APP_GOOGLE_KEY}`
+			`https://maps.googleapis.com/maps/api/timezone/json?location=${data.lat},${data.lng}&timestamp=${timestamp}&key=${process.env.REACT_APP_GOOGLE_KEY}`
 		);
 		result["timezoneID"] = res.data.timeZoneId;
 		return result;

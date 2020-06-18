@@ -5,7 +5,7 @@ import Card from "@material-ui/core/Card";
 import { makeStyles } from "@material-ui/core/styles";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import moment from "moment";
+import moment from "moment-timezone";
 
 const useStyles = makeStyles({
 	root: {
@@ -28,6 +28,7 @@ const DayLight = () => {
 	const classes = useStyles();
 
 	const { data } = useContext(SearchContext);
+	// console.log("data ******------>>>>>>", data);
 
 	if (!Object.keys(data).length) {
 		return null;
@@ -35,8 +36,9 @@ const DayLight = () => {
 
 	const bull = <span className={classes.bullet}>•</span>;
 
-	const convertLocalTimeZone = (data) => {
-		return moment(data).format("h:mm:ss a");
+	const convertLocalTimeZone = (time) => {
+		const zone = data[2].timezoneID;
+		return moment.tz(time, zone).format("hh:mm a");
 	};
 
 	const duration = (start, end) => {
@@ -56,23 +58,30 @@ const DayLight = () => {
 					>
 						Day/Night Length
 					</Typography>
-					{/* <Typography variant='body2' component='p'>
-            {bull} Night - Begin: {convertLocalTimeZone(data[1].astronomical_twilight_end)}, End: {convertLocalTimeZone(data[1].astronomical_twilight_begin)}, Duration:
-            {duration(data[1].astronomical_twilight_end, data[1].astronomical_twilight_begin)}
-          </Typography>
-          <Typography variant='body2' component='p'>
-            {bull} Astronomical Twilight - Begin: {convertLocalTimeZone(data[1].astronomical_twilight_begin)}, End: {convertLocalTimeZone(data[1].astronomical_twilight_end)}
-          </Typography> */}
 					<Typography variant="body2" component="p">
-						{bull} Nautical Twilight - Begin:{" "}
-						{convertLocalTimeZone(data[1].nautical_twilight_begin)}, End:{" "}
-						{convertLocalTimeZone(data[1].nautical_twilight_end)}
+						{bull} Night - Begin:{" "}
+						{convertLocalTimeZone(data[1].astronomical_twilight_end)}, End:{" "}
+						{convertLocalTimeZone(data[1].astronomical_twilight_begin)},
+						Duration:
+						{duration(
+							data[1].astronomical_twilight_end,
+							data[1].astronomical_twilight_begin
+						)}
 					</Typography>
 					<Typography variant="body2" component="p">
+						{bull} Astronomical Twilight - Begin:{" "}
+						{convertLocalTimeZone(data[1].astronomical_twilight_begin)}, End:{" "}
+						{convertLocalTimeZone(data[1].astronomical_twilight_end)}
+					</Typography>
+					<Typography variant="body2" component="p">
+						{bull} Nautical Twilight - Begin:{" "}
+						{convertLocalTimeZone(data[1].sunrise, data[2])}
+					</Typography>
+					{/* <Typography variant="body2" component="p">
 						{bull} Civil Twilight - Begin:{" "}
 						{convertLocalTimeZone(data[1].civil_twilight_begin)}, End:{" "}
 						{convertLocalTimeZone(data[1].civil_twilight_end)}
-					</Typography>
+					</Typography> */}
 				</CardContent>
 			</Card>
 		</div>
